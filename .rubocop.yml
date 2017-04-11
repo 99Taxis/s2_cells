@@ -1,0 +1,74 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - '*.gemspec'
+
+Style/RegexpLiteral:
+  Exclude:
+    - 'Guardfile'
+
+# We deal with s2 cell ids and geo hashes.
+# Doesn't make sense to use this cop.
+Style/NumericLiterals:
+  Enabled: false
+
+# Cop supports --auto-correct.
+# Configuration parameters: Include, TreatCommentsAsGroupSeparators.
+# Include: **/Gemfile, **/gems.rb
+Bundler/OrderedGems:
+  AutoCorrect: true
+
+# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Metrics/LineLength:
+  AllowHeredoc: true
+  AllowURI: true
+  IgnoredPatterns: true
+  Max: 100
+
+# Sometimes we have portuguese in the comments
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+#  Exclude:
+#    - 'spec/**/*'
+#    - 'test/**/*'
+
+# Cop supports --auto-correct.
+Style/EmptyLineAfterMagicComment:
+  AutoCorrect: true
+  Exclude:
+    - 'Gemfile'
+
+Style/ParallelAssignment:
+  Enabled: false
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles, EnforcedStyleForEmptyBraces, SupportedStylesForEmptyBraces.
+# SupportedStyles: space, no_space, compact
+# SupportedStylesForEmptyBraces: space, no_space
+Style/SpaceInsideHashLiteralBraces:
+  AutoCorrect: true
+  EnforcedStyle: no_space
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles, ConsistentQuotesInMultiline.
+# SupportedStyles: single_quotes, double_quotes
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, SupportedStyles.
+# SupportedStyles: final_newline, final_blank_line
+Style/TrailingBlankLines:
+  AutoCorrect: true
+
+# Arrows make more sense for Rakefile
+# as it denotes dependency
+Style/HashSyntax:
+  Exclude:
+    - 'Rakefile'
